@@ -44,31 +44,34 @@ script:
 
 (ert-deftest yaml--test-indent-item-2 ()
   "Indent muliple items."
-  "
+  (yaml--should-indent
+   "
 script:
 - make test
 - make all"
-  "
+   "
 script:
   - make test
-  - make all")
+  - make all"))
 
 (ert-deftest yaml--test-indent-cont-1 ()
   "Indent continued bash item."
-  "
+  (yaml--should-indent
+   "
 install:
 - if [ ... ]; then
 sudo ...
 fi"
-  "
+   "
 install:
   - if [ ... ]; then
       sudo ...
-    fi")
+    fi"))
 
 (ert-deftest yaml--test-indent-cont-2 ()
   "Indent items + continued bash item."
-  "
+  (yaml--should-indent
+   "
 install:
 - if [ ... ]; then
 sudo ...
@@ -80,7 +83,7 @@ fi
 - blah
 script:
 - thing"
-  "
+   "
 install:
   - if [ ... ]; then
       sudo ...
@@ -91,7 +94,7 @@ install:
     fi
   - blah
 script:
-  - thing")
+  - thing"))
 
 (defun yaml--run-tests ()
   (interactive)
