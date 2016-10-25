@@ -103,9 +103,3 @@ script:
     (message "cant run without ert.")))
 
 (provide 'yaml-indent-tests)
-
-
-;;; Local variables:
-;;; no-byte-compile: t
-;;; eval: (local-set-key (kbd "C-c C-c") #'yaml--run-tests)
-;;; End:
